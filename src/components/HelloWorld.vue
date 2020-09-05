@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <p v-for="test in userinfo.data.FranceGlobalLiveData" :key="test">
+      Nombre d'hospitalisés : {{ test.hospitalises }}
+    </p>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,11 +34,38 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+  
   name: 'HelloWorld',
+  data() {
+    return {
+      userinfo: null
+    }
+  },
   props: {
     msg: String
-  }
+  },
+  mounted () {
+    axios({
+  method: 'get',
+  config: {
+    origin: ["http://localhost:8080"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Access-Control-Allow-Methods",
+      "Access-Control-Request-Headers"
+    ],
+    credentials: true,
+    enablePreflight: true
+  },
+  url: 'https://coronavirusapi-france.now.sh/FranceLiveGlobalData',
+}).then((response) => {
+      this.userinfo = JSON.parse(JSON.stringify(response))    
+  })
+}
 }
 </script>
 
