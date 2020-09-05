@@ -1,19 +1,28 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
+    {{ manager }}
     <HelloWorld msg="test"/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+import InterfaceManager from './InterfaceManager.vue'
 export default {
   name: 'App',
+  data() {
+    return {
+    }
+  },
+  getManager: function() {
+    return InterfaceManager;
+  },
   components: {
     HelloWorld
   }
 }
+
 </script>
 
 <style>

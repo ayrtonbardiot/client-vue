@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hello" v-if="manager.helloworld_show = true">
     <h1>{{ msg }}</h1>
     <p v-for="test in userinfo.data.FranceGlobalLiveData" :key="test">
       Nombre d'hospitalisés : {{ test.hospitalises }}
@@ -35,13 +35,15 @@
 
 <script>
 import axios from 'axios';
+import App from '../App.vue';
 
 export default {
   
   name: 'HelloWorld',
   data() {
     return {
-      userinfo: null
+      userinfo: null,
+      manager: App.getManager
     }
   },
   props: {
@@ -63,7 +65,7 @@ export default {
   },
   url: 'https://coronavirusapi-france.now.sh/FranceLiveGlobalData',
 }).then((response) => {
-      this.userinfo = JSON.parse(JSON.stringify(response))    
+      this.userinfo = response 
   })
 }
 }
