@@ -1,25 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    {{ manager }}
-    <HelloWorld msg="test"/>
+    <Animation></Animation>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Animation from './components/AlerteAnim.vue'
 import InterfaceManager from './InterfaceManager.vue'
+        
 export default {
   name: 'App',
   data() {
     return {
+      anim_show: "false",
+      okok: "test"
     }
   },
   getManager: function() {
-    return InterfaceManager;
+    return InterfaceManager.props;
   },
   components: {
-    HelloWorld
+    Animation
   }
 }
 
