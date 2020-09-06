@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <Animation></Animation>
+    <Animation />
   </div>
 </template>
 
 <script>
 import Animation from './components/AlerteAnim.vue'
 import InterfaceManager from './InterfaceManager.vue'
-        
 export default {
   name: 'App',
   data() {
     return {
-      anim_show: "false",
-      okok: "test"
     }
   },
   getManager: function() {
@@ -22,8 +19,16 @@ export default {
   components: {
     Animation
   }
+  
 }
 
+/** window.FlashExternalInterface.openHabblet = function(a, b){
+    const data = JSON.parse(a);
+    console.debug(b);
+    console.log(this.getManager());
+        this.getManager().animation.username = data.username
+        this.getManager().animation.show = true 
+}**/
 </script>
 
 <style>

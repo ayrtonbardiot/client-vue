@@ -1,7 +1,7 @@
 <template>
   <transition name="fade" mode="out-in">
-    <div id="animation_box" class="cookieConsentContainer" v-if="data.animation.show" style="opacity: 1;">
-    <div class="cookieTitle"><a>Nouvelle animation !</a></div>
+    <div id="animation_box" class="cookieConsentContainer" v-show="data.animation.show">
+    <div class="cookieTitle" style="margin-right: 66%"><a>Nouvelle animation !</a></div>
     <div class="box_cross" v-on:click="data.animation.show = !data.animation.show"></div>
     <div class="avatarImage">
     <img id="lookuser" v-bind:src="'https://avatar-api.com/habbo-imaging/avatarimage?figure=' + data.animation.look + '&gesture=sml&action=wav&head_direction=3'">
@@ -17,7 +17,7 @@
 <script>
 import App from '../App.vue';
     export default {
-        name: 'Animation',
+        name: 'AlerteAnim',
         data() {
             return {
               data: App.getManager()
@@ -27,13 +27,11 @@ import App from '../App.vue';
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity .5s
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
 }
-.fade-enter,
-.fade-leave-to {
-    opacity: 0
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 .box_cross {
         background-image: url('~@/img/close.png');
@@ -46,6 +44,28 @@ import App from '../App.vue';
         height: 20px;
         cursor: pointer;
     }
+.box_cross:hover {
+          background-image: url('~@/img/close_hover.png');
+        position: absolute;
+    margin-top: 23px;
+    margin-right: 10px;
+        top: 7px;
+        right: 7px;
+        width: 19px;
+        height: 20px;
+        cursor: pointer;
+}   
+.box_cross:active {
+          background-image: url('~@/img/close_active.png');
+        position: absolute;
+    margin-top: 23px;
+    margin-right: 10px;
+        top: 7px;
+        right: 7px;
+        width: 19px;
+        height: 20px;
+        cursor: pointer;
+}   
 .cookieConsentContainer {
   z-index: 999;
   width: 652px;
@@ -75,6 +95,7 @@ import App from '../App.vue';
   line-height: 20px;
   display: block;
   margin-top: 10px;
+  float: left;
 } .cookieConsentContainer .cookieDesc a {
   font-family: OpenSans, arial, "sans-serif";
   color: #FFFFFF;
@@ -86,7 +107,7 @@ import App from '../App.vue';
   color: #FFFFFF;
   font-size: 14px;
   font-weight: bold;
-  margin-top: 14px;
+  margin-top: 65px;
   background: #000000;
   box-sizing: border-box; 
   padding: 15px 24px;
