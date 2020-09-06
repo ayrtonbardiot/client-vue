@@ -12,6 +12,7 @@
                 username: "",
                 msg: "",
                 look: "",
+                idroom: 0,
                 show: false
             },
         },

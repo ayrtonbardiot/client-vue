@@ -7,9 +7,9 @@
     <img id="lookuser" v-bind:src="'https://avatar-api.com/habbo-imaging/avatarimage?figure=' + data.animation.look + '&gesture=sml&action=wav&head_direction=3'">
     </div>
       <div class="cookieDesc">
-        <p>Une nouvelle animation a démarré chez {{ data.animation.pseudo }} ! {{ data.animation.msg }} </p>
+        <p>Une nouvelle animation a démarré chez {{ data.animation.username }} ! {{ data.animation.msg }} </p>
       </div>
-    <div class="cookieButton"><a id="rejoindre_btn" on-click="">Rejoindre !</a></div>
+    <div class="cookieButton"><a id="rejoindre_btn">Rejoindre !</a></div>
   </div>
   </transition>
 </template>
@@ -26,7 +26,7 @@ import App from '../App.vue';
     }
 </script>
 
-<style scoped>
+<style>
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
