@@ -1,12 +1,15 @@
 <template>
   <div id="app">
     <Animation />
+    <Piano />
   </div>
 </template>
 
 <script>
 import Animation from './components/AlerteAnim.vue'
 import InterfaceManager from './InterfaceManager.vue'
+import Piano from './components/Piano.vue'
+
 export default {
   name: 'App',
   data() {
@@ -17,10 +20,12 @@ export default {
     return InterfaceManager.props;
   },
   sendData: function(datajs) {
+    console.log(datajs)
   document.querySelector('object, embed').openroom(datajs)
   },
   components: {
-    Animation
+    Animation,
+    Piano
   }
   
   
@@ -36,6 +41,19 @@ window.FlashExternalInterface.openHabblet = function(a, b){
         InterfaceManager.props.animation.idroom = JSON.parse(a).idroom
         InterfaceManager.props.animation.show = true
         break;
+      case 'piano':
+        if(JSON.parse(a).data == 'open'){
+          InterfaceManager.props.piano.show = true
+        }  else {
+          InterfaceManager.props.piano.show = false
+        }
+        break;
+      case 'pianonote':
+       if(JSON.parse(a).note) {
+        var audio = new Audio("http://127.0.0.1/audio/" + JSON.parse(a).note + ".mp3");
+        audio.play();
+        break;
+      }  
   }
 }
 </script>

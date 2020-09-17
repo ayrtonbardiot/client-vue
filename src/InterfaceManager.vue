@@ -15,6 +15,9 @@
                 idroom: 0,
                 show: false
             },
+            piano: {
+                show: false
+            }
         },
     }
 </script>
